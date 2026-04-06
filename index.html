@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Shahid Chaudhary | Portfolio</title>
+        <meta name="description"
+            content="Professional portfolio website for Shahid Chaudhary" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+            rel="stylesheet">
+        <style>
+    :root {
+      --bg: #0b1120;
+      --bg-soft: #111827;
+      --card: rgba(255,255,255,0.06);
+      --line: rgba(255,255,255,0.12);
+      --text: #f8fafc;
+      --muted: #cbd5e1;
+      --accent: #38bdf8;
+      --accent-2: #22c55e;
+      --shadow: 0 20px 60px rgba(0,0,0,0.25);
+      --radius: 22px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: radial-gradient(circle at top left, rgba(56,189,248,0.12), transparent 25%),
+                  radial-gradient(circle at top right, rgba(34,197,94,0.10), transparent 25%),
+                  linear-gradient(180deg, #020617, #0f172a 60%, #020617);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .container { width: min(92%, var(--max)); margin: auto; }
+
+    .navbar {
+      position: sticky; top: 0; z-index: 1000;
+      backdrop-filter: blur(12px);
+      background: rgba(2, 6, 23, 0.7);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .nav-wrap {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 0;
+    }
+
+    .brand { font-size: 1.15rem; font-weight: 800; letter-spacing: 0.5px; }
+    .brand span { color: var(--accent); }
+
+    .nav-links {
+      display: flex; gap: 22px; align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-weight: 500;
+      transition: 0.25s ease;
+    }
+
+    .nav-links a:hover, .nav-links a.active { color: var(--text); }
+
+    .menu-btn {
+      display: none; background: transparent; border: 1px solid var(--line);
+      color: var(--text); padding: 10px 12px; border-radius: 12px; cursor: pointer;
+    }
+
+    .hero {
+      min-height: 92vh;
+      display: grid;
+      align-items: center;
+      padding: 72px 0 32px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      border: 1px solid rgba(56,189,248,0.22);
+      border-radius: 999px;
+      background: rgba(56,189,248,0.08);
+      color: #bae6fd;
+      font-size: 0.92rem;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      line-height: 1.05;
+      margin-bottom: 18px;
+      font-weight: 800;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 1.08rem;
+      max-width: 650px;
+      margin-bottom: 28px;
+    }
+
+    .cta-group {
+      display: flex; flex-wrap: wrap; gap: 14px;
+      margin-bottom: 28px;
+    }
+
+    .btn {
+      padding: 14px 22px;
+      border-radius: 14px;
+      font-weight: 700;
+      transition: 0.25s ease;
+      display: inline-flex; align-items: center; gap: 10px;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), #2563eb);
+      color: white;
+      box-shadow: var(--shadow);
+    }
+
+    .btn-primary:hover { transform: translateY(-2px); }
+    .btn-secondary {
+      border-color: var(--line);
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
+    }
+
+    .hero-cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      max-width: 720px;
+    }
+
+    .mini-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+      backdrop-filter: blur(10px);
+    }
+
+    .mini-card h3 { font-size: 1.2rem; margin-bottom: 6px; }
+    .mini-card p { font-size: 0.95rem; margin: 0; }
+
+    .profile-wrap {
+      position: relative;
+      display: flex; justify-content: center;
+    }
+
+    .profile-card {
+      width: min(100%, 420px);
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 30px;
+      padding: 20px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(16px);
+    }
+
+    .profile-card img {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      border-radius: 24px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .profile-info {
+      display: flex; justify-content: space-between; gap: 16px;
+      margin-top: 16px;
+      padding: 16px;
+      background: rgba(255,255,255,0.04);
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .section {
+      padding: 88px 0;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 14px;
+      font-weight: 800;
+    }
+
+    .section-subtitle {
+      color: var(--muted);
+      max-width: 720px;
+      margin-bottom: 36px;
+    }
+
+    .grid-2, .grid-3 {
+      display: grid;
+      gap: 24px;
+    }
+
+    .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+    .card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+      transition: 0.25s ease;
+    }
+
+    .card:hover { transform: translateY(-5px); }
+
+    .about-list, .skills-list {
+      display: flex; flex-wrap: wrap; gap: 12px;
+      margin-top: 18px;
+    }
+
+    .chip {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(56,189,248,0.10);
+      border: 1px solid rgba(56,189,248,0.16);
+      color: #dbeafe;
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    .timeline {
+      display: grid; gap: 20px;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 24px;
+      border-left: 2px solid rgba(56,189,248,0.25);
+    }
+
+    .timeline-item::before {
+      content: "";
+      width: 12px; height: 12px;
+      background: var(--accent);
+      border-radius: 50%;
+      position: absolute; left: -7px; top: 8px;
+      box-shadow: 0 0 0 6px rgba(56,189,248,0.12);
+    }
+
+    .timeline-item h3 { margin-bottom: 6px; }
+    .timeline-item .meta { color: #93c5fd; font-size: 0.95rem; margin-bottom: 10px; }
+    .timeline-item p { color: var(--muted); }
+
+    .project-card h3 { margin-bottom: 10px; }
+    .project-card p { color: var(--muted); margin-bottom: 18px; }
+
+    .project-tags { display: flex; flex-wrap: wrap; gap: 10px; }
+    .project-tags span {
+      padding: 8px 12px; border-radius: 999px;
+      background: rgba(34,197,94,0.12);
+      border: 1px solid rgba(34,197,94,0.18);
+      color: #dcfce7; font-size: 0.88rem;
+    }
+
+    .contact-box {
+      text-align: center;
+      padding: 36px;
+      background: linear-gradient(135deg, rgba(56,189,248,0.14), rgba(37,99,235,0.12));
+    }
+
+    footer {
+      padding: 28px 0 40px;
+      text-align: center;
+      color: #94a3b8;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: all 0.8s ease;
+    }
+
+    .fade-up.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid, .grid-2, .grid-3 { grid-template-columns: 1fr; }
+      .hero { min-height: auto; }
+      .hero-cards { grid-template-columns: 1fr; }
+      .profile-card { max-width: 380px; }
+    }
+
+    @media (max-width: 768px) {
+      .menu-btn { display: block; }
+      .nav-links {
+        position: absolute;
+        top: 76px; right: 4%;
+        width: min(92vw, 280px);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 18px;
+        border-radius: 20px;
+        background: rgba(2, 6, 23, 0.96);
+        border: 1px solid rgba(255,255,255,0.08);
+        display: none;
+      }
+      .nav-links.show { display: flex; }
+      .section { padding: 70px 0; }
+      .card { padding: 22px; }
+      .profile-info { flex-direction: column; }
+    }
+  </style>
+    </head>
+    <body>
+        <header class="navbar">
+            <div class="container nav-wrap">
+                <a href="#home" class="brand">Shahid<span>.</span></a>
+                <nav class="nav-links" id="navLinks">
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#experience">Experience</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#education">Education</a>
+                    <a href="#contact">Contact</a>
+                </nav>
+                <button class="menu-btn" id="menuBtn">☰</button>
+            </div>
+        </header>
+
+        <main>
+            <section class="hero" id="home">
+                <div class="container hero-grid">
+                    <div class="fade-up">
+                        <div class="eyebrow">Cybersecurity • DevSecOps • Cloud &
+                            Automation</div>
+                        <h1>Hi, I’m Shahid Chaudhary</h1>
+                        <p>
+                            MSc-focused technology professional building secure,
+                            modern and scalable systems with a strong interest
+                            in DevSecOps, cloud deployment, automation and
+                            secure software delivery.
+                        </p>
+                        <div class="cta-group">
+                            <a href="#projects" class="btn btn-primary">View
+                                Projects</a>
+                            <a href="#contact" class="btn btn-secondary">Contact
+                                Me</a>
+                            <a
+                                href="https://www.linkedin.com/in/shahid-chaudhary19"
+                                target="_blank"
+                                class="btn btn-secondary">LinkedIn</a>
+                        </div>
+                        <div class="hero-cards">
+                            <div class="mini-card">
+                                <h3>DevSecOps</h3>
+                                <p>CI/CD pipelines, security integration and
+                                    automation-focused delivery.</p>
+                            </div>
+                            <div class="mini-card">
+                                <h3>Cloud</h3>
+                                <p>AWS deployment, container workflows and
+                                    infrastructure fundamentals.</p>
+                            </div>
+                            <div class="mini-card">
+                                <h3>Security</h3>
+                                <p>Secure development practices, scanning tools
+                                    and modern security mindset.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="profile-wrap fade-up">
+                        <div class="profile-card">
+                            <img src="profile.jpg"
+                                alt="Shahid Chaudhary portrait" />
+                            <div class="profile-info">
+                                <div>
+                                    <strong>Current Focus</strong>
+                                    <p
+                                        style="color: var(--muted); margin-top: 6px;">DevSecOps,
+                                        Cloud Security & CI/CD</p>
+                                </div>
+                                <div>
+                                    <strong>Location</strong>
+                                    <p
+                                        style="color: var(--muted); margin-top: 6px;">United
+                                        Kingdom</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section" id="about">
+                <div class="container">
+                    <h2 class="section-title fade-up">About Me</h2>
+                    <p class="section-subtitle fade-up">
+                        I am passionate about secure software delivery,
+                        cloud-based deployment and building efficient
+                        engineering workflows. My portfolio is focused on
+                        technical, academic and professional work relevant to
+                        cybersecurity, DevSecOps and software engineering.
+                    </p>
+
+                    <div class="grid-2">
+                        <div class="card fade-up">
+                            <h3>Professional Summary</h3>
+                            <p style="color: var(--muted); margin-top: 14px;">
+                                I am developing practical experience in secure
+                                CI/CD pipelines, containerization, cloud
+                                deployment and DevSecOps integration. I enjoy
+                                combining automation, security and software
+                                delivery to create reliable engineering
+                                solutions.
+                            </p>
+                            <div class="about-list">
+                                <span class="chip">DevSecOps</span>
+                                <span class="chip">Cloud Security</span>
+                                <span class="chip">CI/CD</span>
+                                <span class="chip">Docker</span>
+                                <span class="chip">AWS</span>
+                                <span class="chip">Terraform</span>
+                            </div>
+                        </div>
+
+                        <div class="card fade-up">
+                            <h3>What This Portfolio Highlights</h3>
+                            <p style="color: var(--muted); margin-top: 14px;">
+                                This website intentionally focuses only on
+                                technical and career-relevant content from your
+                                professional profile and academic direction —
+                                not unrelated or temporary jobs.
+                            </p>
+                            <div class="about-list">
+                                <span class="chip">Technical Projects</span>
+                                <span class="chip">Education</span>
+                                <span class="chip">Skills</span>
+                                <span class="chip">Professional Goals</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section" id="skills">
+                <div class="container">
+                    <h2 class="section-title fade-up">Technical Skills</h2>
+                    <p class="section-subtitle fade-up">A clean overview of the
+                        tools, platforms and technologies aligned with your
+                        professional direction.</p>
+                    <div class="grid-3">
+                        <div class="card fade-up">
+                            <h3>DevOps & CI/CD</h3>
+                            <div class="skills-list">
+                                <span class="chip">GitHub Actions</span>
+                                <span class="chip">CI/CD Pipelines</span>
+                                <span class="chip">Automation</span>
+                                <span class="chip">Version Control</span>
+                            </div>
+                        </div>
+                        <div class="card fade-up">
+                            <h3>Security & DevSecOps</h3>
+                            <div class="skills-list">
+                                <span class="chip">SonarCloud</span>
+                                <span class="chip">Trivy</span>
+                                <span class="chip">OWASP Dependency Check</span>
+                                <span class="chip">Secure SDLC</span>
+                            </div>
+                        </div>
+                        <div class="card fade-up">
+                            <h3>Cloud & Infrastructure</h3>
+                            <div class="skills-list">
+                                <span class="chip">AWS</span>
+                                <span class="chip">Terraform</span>
+                                <span class="chip">Docker</span>
+                                <span class="chip">ECR</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section" id="experience">
+                <div class="container">
+                    <h2 class="section-title fade-up">Experience Focus</h2>
+                    <p class="section-subtitle fade-up">Professional positioning
+                        aligned to your target field instead of unrelated job
+                        history.</p>
+                    <div class="card fade-up">
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <h3>Cybersecurity & DevSecOps Career
+                                    Development</h3>
+                                <div class="meta">Professional Growth
+                                    Track</div>
+                                <p>Building practical expertise in secure
+                                    pipeline design, automation, cloud
+                                    deployment and security tooling
+                                    integration.</p>
+                            </div>
+                            <div class="timeline-item">
+                                <h3>Secure Software Delivery Projects</h3>
+                                <div class="meta">Hands-on Technical Work</div>
+                                <p>Working on implementation-oriented projects
+                                    involving CI/CD, Docker, Terraform, AWS and
+                                    DevSecOps best practices.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section" id="projects">
+                <div class="container">
+                    <h2 class="section-title fade-up">Featured Projects</h2>
+                    <p class="section-subtitle fade-up">Projects can be updated
+                        later with GitHub links, screenshots and deployment
+                        demos.</p>
+                    <div class="grid-3">
+                        <div class="card project-card fade-up">
+                            <h3>Automated CI/CD Pipeline with DevSecOps</h3>
+                            <p>Design and implementation of a secure CI/CD
+                                pipeline integrating code quality, vulnerability
+                                scanning and deployment automation.</p>
+                            <div class="project-tags">
+                                <span>GitHub
+                                    Actions</span><span>Trivy</span><span>SonarCloud</span><span>Docker</span>
+                            </div>
+                        </div>
+                        <div class="card project-card fade-up">
+                            <h3>AWS Deployment & Container Workflow</h3>
+                            <p>Container-based application workflow with cloud
+                                deployment approach using AWS services and image
+                                management.</p>
+                            <div class="project-tags">
+                                <span>AWS</span><span>Docker</span><span>ECR</span><span>Cloud</span>
+                            </div>
+                        </div>
+                        <div class="card project-card fade-up">
+                            <h3>Infrastructure as Code Setup</h3>
+                            <p>Infrastructure provisioning and environment setup
+                                using Terraform to support scalable and
+                                reproducible deployment.</p>
+                            <div class="project-tags">
+                                <span>Terraform</span><span>IaC</span><span>AWS</span><span>Automation</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section" id="education">
+                <div class="container">
+                    <h2 class="section-title fade-up">Education</h2>
+                    <p class="section-subtitle fade-up">Academic direction that
+                        supports your professional profile.</p>
+                    <div class="card fade-up">
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <h3>MSc Project Focus: DevSecOps & Secure
+                                    CI/CD</h3>
+                                <div class="meta">Postgraduate Academic
+                                    Work</div>
+                                <p>Research and implementation focused on
+                                    integrating DevSecOps practices into
+                                    automated CI/CD pipelines to improve
+                                    delivery speed and security posture.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section" id="contact">
+                <div class="container">
+                    <div class="card contact-box fade-up">
+                        <h2 class="section-title"
+                            style="margin-bottom: 10px;">Let’s Connect</h2>
+                        <p class="section-subtitle"
+                            style="margin: 0 auto 22px;">
+                            Open to professional opportunities, collaborations
+                            and conversations related to cybersecurity,
+                            DevSecOps and cloud engineering.
+                        </p>
+                        <div class="cta-group" style="justify-content: center;">
+                            <a
+                                href="https://www.linkedin.com/in/shahid-chaudhary19"
+                                target="_blank" class="btn btn-primary">Visit
+                                LinkedIn</a>
+                            <a href="mailto:shahidchaudhary0729@gmail.com"
+                                class="btn btn-secondary">Email Me</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="container">
+                <p>© <span id="year"></span> Shahid Chaudhary. All rights
+                    reserved.</p>
+            </div>
+        </footer>
+
+        <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+    const navItems = document.querySelectorAll('.nav-links a');
+
+    menuBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
+
+    navItems.forEach(link => {
+      link.addEventListener('click', () => navLinks.classList.remove('show'));
+    });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    const sections = document.querySelectorAll('section[id]');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 140;
+        if (pageYOffset >= sectionTop) current = section.getAttribute('id');
+      });
+      navItems.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) link.classList.add('active');
+      });
+    });
+  </script>
+    </body>
+</html>
